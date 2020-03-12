@@ -30,15 +30,21 @@ gauss_distr <- function(nSize){
 
 coshi_distr <- function(nSize){
   size = nSize; 
+  if (size == 1000) {
+    sup = 0.04;
+  }
+  else {
+    sup = 0.4;
+  }
   column = 1 + 3.3 * log(size) 
   randX <- rcauchy(n = size, location = 0, scale = 1) 
-  #randX 
   
   minEl = min(randX) 
   maxEl = max(randX)
   
   hist(randX, probability = TRUE,
        main = paste("Распределение Коши."),
+       ylim = c(0, sup),
        breaks = column,
        col = "#00E0FF"
   );  
@@ -77,7 +83,7 @@ puasson_distr <- function(nSize){
     x[i] = round( minEl + i * step, 0) 
   } 
   
-  par(new= TRUE) 
+  par(new = TRUE) 
   lines(x, dpois(x, lambda = 10), 
         lwd = 2.5,
         col = "#FF0095"
@@ -128,7 +134,7 @@ uniform_distr <- function(nSize){
        col = "#00E0FF"
   ); 
   
-  step = (maxEl-minEl) / column 
+  step = (maxEl - minEl) / column 
   
   x = array(c(TRUE, FALSE), dim = c(column)) 
   for (i in 1:column + 1) { 
