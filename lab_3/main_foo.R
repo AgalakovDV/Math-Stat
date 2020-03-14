@@ -161,11 +161,11 @@ create_sel <- function(num_sel = 1, nSize = size20) {
   }
   if (num_sel == 5) {     #Равномерное
     if (nSize == 1) {
-      pois_distr();
+      uniform_distr();
       return(NULL);
     }
     for (i in start_:stop_) {
-      count = count + pois_distr(nSize)
+      count = count + uniform_distr(nSize)
     }
      return(count/nSize/1000)
   }
